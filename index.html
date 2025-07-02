@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <!-- 基础信息 -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>周童装饰 · 您的理想家居设计专家</title>
 
-    <!-- SEO -->
     <meta name="description" content="周童装饰 – 一站式家装与软装服务，专注室内设计、施工、软装搭配与全屋定制。江山市十年口碑装修公司，为您打造高品质理想居住空间。" />
     <meta name="keywords" content="江山市装修, 室内设计, 全屋定制, 软装搭配, 家装公司" />
 
-    <!-- 字体 & 图标 -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
@@ -21,99 +18,401 @@
             --accent: #e74c3c;
             --bg: #f4f5f7;
             --text: #333;
+            --white: #fff;
+            --nav-height: 60px;
         }
-        * {margin: 0; padding: 0; box-sizing: border-box;}
-        html {scroll-behavior: smooth;}
-        body {font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg);}        
-        a {color: inherit; text-decoration: none;}
-        img {display: block; max-width: 100%;}
-        .container {max-width: 1200px; margin: 0 auto; padding: 0 20px;}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* ───── 顶部导航 ───── */
-        nav {background: #222c38; color: #fff; padding: 1rem 0; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; transition: background .3s ease; box-shadow: 0 2px 10px rgba(0,0,0,.06);}    
-        nav.scrolled {background: rgba(34,44,56,.95);}        
-        nav .container {display:flex; justify-content:space-between; align-items:center;}
-        .logo {font-size:1.6rem; font-weight:600; letter-spacing:2px; white-space:nowrap;}
-        .nav-links {display:flex; list-style:none; gap:2rem;}
-        .nav-links a {color:#fff; font-size:.95rem; font-weight:500; transition:color .3s;}
-        .nav-links a:hover {color:#70b7ff;}
-        .hamburger {display:none; font-size:1.6rem; cursor:pointer; color:#fff;}
-
-        /* ───── 背景层 ───── */
-        .hero-bg {position:fixed; inset:0; z-index:-2; background:linear-gradient(120deg,var(--primary) 0%,#36d1c4 100%);}        
-        .hero-canvas {position:fixed; inset:0; width:100%; height:100%; z-index:-1;}
+        nav { background: rgba(34, 44, 56, 0.9); color: var(--white); padding: 0 20px; height: var(--nav-height); position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; transition: background .3s ease; backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+        nav.scrolled { background: rgba(20, 30, 40, 0.95); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+        .logo { font-size: 1.6rem; font-weight: 600; letter-spacing: 1px; white-space: nowrap; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: var(--white); font-size: .95rem; font-weight: 500; transition: color .3s; position: relative; padding: 5px 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--primary); transition: width .3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .hamburger { display: none; font-size: 1.6rem; cursor: pointer; color: var(--white); }
 
         /* ───── Hero Slider ───── */
-        .hero-slider {margin-top:60px; position:relative; overflow:hidden;}
-        .slider {position:relative; width:100%; height:calc(100vh - 60px);}        
-        .slide {position:absolute; inset:0; opacity:0; transition:opacity .8s ease;}
-        .slide.active {opacity:1;}
-        .slide img {width:100%; height:100%; object-fit:cover;}
-        .nav-btn {position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.35); border:none; color:#fff; font-size:2rem; width:46px; height:46px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);}        
-        .nav-btn.prev {left:20px;}        
-        .nav-btn.next {right:20px;}
-        .nav-btn:hover {background:rgba(0,0,0,.55);}        
-        .hero-overlay {position:absolute; bottom:12%; left:50%; transform:translateX(-50%); background:rgba(30,40,60,.5); backdrop-filter:blur(4px); padding:2rem 3rem; border-radius:1.3rem; box-shadow:0 8px 40px rgba(0,0,0,.15); color:#fff; text-align:center; max-width:650px;}
-        .hero-overlay h1 {font-size:2.6rem; font-weight:600; margin-bottom:1rem;}
-        .hero-overlay p {font-size:1.1rem; margin-bottom:1.8rem;}
-        .cta-button {display:inline-block; background:var(--accent); color:#fff; padding:14px 38px; font-size:1rem; border-radius:2rem; box-shadow:0 2px 18px rgba(231,76,60,.15); transition:all .2s;}
-        .cta-button:hover {background:#c0392b; transform:scale(1.05);}        
+        .hero-slider { margin-top: var(--nav-height); position: relative; overflow: hidden; background: #222; }
+        .slider { position: relative; width: 100%; height: calc(100vh - var(--nav-height)); }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide.active { opacity: 1; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.35); border: none; color: var(--white); font-size: 1.8rem; width: 46px; height: 46px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: background .3s; }
+        .nav-btn.prev { left: 20px; }
+        .nav-btn.next { right: 20px; }
+        .nav-btn:hover { background: rgba(0,0,0,.55); }
+        .hero-overlay { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); background: rgba(30,40,60,.6); backdrop-filter: blur(8px); padding: 2rem 3rem; border-radius: 1rem; box-shadow: 0 8px 40px rgba(0,0,0,.2); color: var(--white); text-align: center; max-width: 90%; width: 650px; }
+        .hero-overlay h1 { font-size: 2.6rem; font-weight: 600; margin-bottom: 1rem; }
+        .hero-overlay p { font-size: 1.1rem; margin-bottom: 1.8rem; }
+        .cta-button { display: inline-block; background: var(--accent); color: var(--white); padding: 14px 38px; font-size: 1rem; border-radius: 50px; box-shadow: 0 4px 20px rgba(231,76,60,.25); transition: all .3s; }
+        .cta-button:hover { background: #c0392b; transform: scale(1.05); }
 
         /* ───── 通用区块 ───── */
-        section {padding:90px 0;}
-        .section-title {text-align:center; font-size:2.4rem; color:var(--primary-dark); margin-bottom:3rem;}
+        section { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 2.4rem; color: var(--primary-dark); margin-bottom: 4rem; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--primary); }
 
         /* ───── 服务 ───── */
-        .services-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2.2rem;}
-        .service-card {background:#fff; border:1px solid #e9eef5; border-radius:1rem; text-align:center; padding:2.2rem 1.3rem; transition:transform .25s, box-shadow .25s;}
-        .service-card:hover {transform:translateY(-6px) scale(1.03); box-shadow:0 8px 22px rgba(52,152,219,.12);}        
-        .service-icon {font-size:2.4rem; margin-bottom:1rem; color:var(--primary);}        
-        .service-card h3 {color:var(--primary-dark); margin-bottom:1rem; font-size:1.15rem;}
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .service-card { background: var(--white); border: 1px solid #e9eef5; border-radius: .8rem; text-align: center; padding: 2.5rem 1.5rem; transition: transform .3s, box-shadow .3s; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(91, 134, 229, .15); }
+        .service-icon { font-size: 2.6rem; margin-bottom: 1.2rem; color: var(--primary); }
+        .service-card h3 { color: var(--primary-dark); margin-bottom: 1rem; font-size: 1.2rem; }
+        .service-card p { font-size: .95rem; color: #666; }
 
         /* ───── 流程 ───── */
-        .steps {background:#fff;}
-        .steps-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; counter-reset:step;}
-        .step-card {background:#fafbfc; border:1px solid #eef2f7; border-radius:1rem; padding:2rem; text-align:center; position:relative;}
-        .step-card::before {content:counter(step); counter-increment:step; font-size:2.8rem; color:var(--primary); font-weight:600; position:absolute; top:10px; left:20px; opacity:.15;}
-        .step-title {font-weight:600; margin-bottom:.6rem; color:var(--primary-dark);}        
+        #process { background: var(--white); }
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; counter-reset: step; }
+        .step-card { background: #fafbfc; border: 1px solid #eef2f7; border-radius: .8rem; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+        .step-card::before { content: counter(step); counter-increment: step; font-size: 3.5rem; color: var(--primary); font-weight: 700; position: absolute; top: -10px; right: 15px; opacity: .1; }
+        .step-icon { font-size: 2.2rem; color: var(--primary); margin-bottom: 1rem; }
+        .step-title { font-weight: 600; margin-bottom: .6rem; color: var(--primary-dark); font-size: 1.1rem; }
+        .step-card p { font-size: .9rem; color: #777; }
 
         /* ───── 案例 ───── */
-        .portfolio-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem;}
-        .portfolio-item {position:relative; border-radius:1rem; overflow:hidden; box-shadow:0 4px 16px rgba(34,44,56,.09);}        
-        .portfolio-item img {height:260px; width:100%; object-fit:cover; transition:transform .35s ease;}
-        .portfolio-item:hover img {transform:scale(1.08);}        
-        .portfolio-overlay {position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.85),transparent 70%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; color:#fff; transform:translateY(100%); transition:transform .35s ease;}
-        .portfolio-item:hover .portfolio-overlay {transform:translateY(0);}        
-
-        /* ───── 证书 ───── */
-        .cert-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem;}
-        .cert-grid img {border-radius:1rem; box-shadow:0 4px 16px rgba(34,44,56,.09);}        
-
-        /* ───── 团队 ───── */
-        .team-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2.2rem; text-align:center;}
-        .member {background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 14px rgba(52,152,219,.09);}        
-        .member img {height:280px; width:100%; object-fit:cover;}
-        .member-info {padding:1.3rem;}
-        .member-info h4 {margin-bottom:.3rem; color:var(--primary-dark);}        
-        .member-info span {font-size:.9rem; color:#777;}
-
-        /* ───── 评价 ───── */
-        .testimonials {background:#213043; color:#fff;}
-        .testi-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2.2rem;}
-        .testi-card {background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:1rem; padding:2rem; position:relative;}
-        .testi-card i {font-size:2rem; color:var(--accent); margin-bottom:1rem;}
-        .testi-card p {font-size:.95rem; margin-bottom:1.2rem;}
-        .testi-card h4 {font-size:1rem; color:#48c6ef;}
-
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .portfolio-item { position: relative; border-radius: .8rem; overflow: hidden; box-shadow: 0 6px 20px rgba(34,44,56,.1); }
+        .portfolio-item img { height: 260px; width: 100%; object-fit: cover; transition: transform .4s ease; }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.8), transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: var(--white); transform: translateY(100%); transition: transform .4s ease-in-out, opacity .4s; opacity: 0; }
+        .portfolio-item:hover .portfolio-overlay { transform: translateY(0); opacity: 1; }
+        .portfolio-overlay h4 { font-size: 1.2rem; }
+        .portfolio-overlay p { font-size: .9rem; opacity: .8; }
+        
         /* ───── FAQ ───── */
-        .faq-item {background:#fff; border:1px solid #e9eef5; border-radius:.8rem; margin-bottom:1rem; overflow:hidden; transition:all .25s;}
-        .faq-question {display:flex; justify-content:space-between; align-items:center; padding:1rem 1.3rem; cursor:pointer; font-weight:500; color:var(--primary-dark);}        
-        .faq-answer {max-height:0; overflow:hidden; padding:0 1.3rem; transition:max-height .35s ease;}
-        .faq-answer p {padding:1rem 0; color:#555;}
-        .faq-item.active .faq-answer {max-height:200px;}        
-        .faq-item.active .faq-question i {transform:rotate(180deg);}        
+        .faq-item { background: var(--white); border: 1px solid #e9eef5; border-radius: .8rem; margin-bottom: 1rem; overflow: hidden; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-dark); }
+        .faq-question i { transition: transform .3s; }
+        .faq-answer { max-height: 0; overflow: hidden; padding: 0 1.5rem; transition: max-height .4s ease-in-out, padding .3s; }
+        .faq-answer p { padding: 1.2rem 0; color: #555; border-top: 1px solid #e9eef5; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 1.2rem; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--primary); }
 
-        /* ───── 联系 ───── */
-        .contact {background:#213043; color:#fff;}
-        .contact-content {display:grid; grid-template-columns:repeat(auto
+        /* ───── 联系我们 ───── */
+        #contact { background: var(--primary-dark); color: var(--white); }
+        #contact .section-title { color: var(--white); }
+        #contact .section-title::after { background: var(--white); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .contact-info p { margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; }
+        .contact-info i { font-size: 1.5rem; color: var(--primary); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: .5rem; border: 1px solid #4a5c7a; background: #2f4058; color: var(--white); font-family: inherit; }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form button { width: 100%; padding: 1rem; border: none; border-radius: .5rem; background: var(--accent); color: var(--white); font-size: 1.1rem; cursor: pointer; transition: background .3s; }
+        .contact-form button:hover { background: #c0392b; }
+
+        /* ───── 页脚 ───── */
+        footer { background: #151c25; color: #aab2bd; padding: 3rem 0; text-align: center; }
+        .footer-socials { margin-bottom: 1.5rem; }
+        .footer-socials a { margin: 0 1rem; font-size: 1.5rem; transition: color .3s; }
+        .footer-socials a:hover { color: var(--primary); }
+        
+        /* ───── 响应式设计 ───── */
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { position: fixed; top: var(--nav-height); right: -100%; width: 250px; height: calc(100vh - var(--nav-height)); background: #222c38; flex-direction: column; align-items: center; padding-top: 2rem; transition: right .4s ease-in-out; }
+            .nav-links.active { right: 0; }
+            .hamburger { display: block; }
+            .hero-overlay { padding: 1.5rem; width: 90%; }
+            .hero-overlay h1 { font-size: 2rem; }
+            .hero-overlay p { font-size: 1rem; }
+            .steps-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">周童装饰</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#services" class="nav-link">核心服务</a></li>
+                <li><a href="#process" class="nav-link">服务流程</a></li>
+                <li><a href="#portfolio" class="nav-link">案例展示</a></li>
+                <li><a href="#faq" class="nav-link">常见问题</a></li>
+                <li><a href="#contact" class="nav-link">联系我们</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="hero-slider">
+        <div class="slider">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1558913506-444a86f254e4?q=80&w=2070&auto=format&fit=crop" alt="现代客厅设计">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=2070&auto=format&fit=crop" alt="舒适卧室设计">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="温馨家居空间">
+            </div>
+        </div>
+        <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="hero-overlay">
+            <h1>设计理想家，从周童开始</h1>
+            <p>我们用心倾听您的需求，用专业打造您梦想的居住空间。</p>
+            <a href="#contact" class="cta-button">免费获取报价</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">我们的服务</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <h3>全屋定制设计</h3>
+                        <p>从空间规划到材料选择，为您量身打造独一无二的家。</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-couch"></i></div>
+                        <h3>软装搭配服务</h3>
+                        <p>精选家具、窗帘、灯具，提升空间格调与舒适度。</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                        <h3>专业施工团队</h3>
+                        <p>经验丰富的施工团队，确保设计完美落地，品质无忧。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <h2 class="section-title">服务流程</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fas fa-comments"></i></div>
+                        <h4 class="step-title">初步沟通</h4>
+                        <p>了解您的需求与预算</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fas fa-ruler-combined"></i></div>
+                        <h4 class="step-title">现场勘测</h4>
+                        <p>精准测量，规划空间</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h4 class="step-title">方案设计</h4>
+                        <p>提供创意设计与效果图</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                        <h4 class="step-title">施工与验收</h4>
+                        <p>精工细作，完美交付</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="portfolio">
+            <div class="container">
+                <h2 class="section-title">我们的案例</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1505691938895-1758d7FEB511?w=500&auto=format&fit=crop&q=60" alt="现代简约风客厅">
+                        <div class="portfolio-overlay">
+                            <h4>现代简约风</h4>
+                            <p>开阔明亮，功能至上</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1560185007-c5ca915a0152?w=500&auto=format&fit=crop&q=60" alt="新中式卧室">
+                        <div class="portfolio-overlay">
+                            <h4>新中式</h4>
+                            <p>东方韵味与现代元素的结合</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1617103994468-e27e8f195132?w=500&auto=format&fit=crop&q=60" alt="北欧风书房">
+                        <div class="portfolio-overlay">
+                            <h4>北欧风</h4>
+                            <p>自然、温馨、简洁</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">常见问题</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>装修的整个周期大概需要多久？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>根据房屋面积和复杂程度，一般家装周期在2-4个月不等。我们会根据您的具体情况，在合同中明确工期。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>你们的报价包含哪些项目？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>我们的报价清晰透明，会详细列出设计费、材料费、人工费等所有项目，无任何隐形消费。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>施工过程中可以修改方案吗？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>在不影响主体结构和工程进度的前提下，我们允许进行合理的方案微调。具体变更会产生相应的费用和工期调整，我们会与您提前沟通确认。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>开始您的梦想家园之旅</h3>
+                        <p>现在就联系我们，获取免费的咨询和初步报价。我们的专家团队随时准备为您服务。</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 江山市XX路XX号周童装饰</p>
+                        <p><i class="fas fa-phone"></i> 138-8888-8888</p>
+                        <p><i class="fas fa-envelope"></i> zt-design@example.com</p>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="您的姓名" required>
+                        <input type="tel" placeholder="您的电话" required>
+                        <textarea placeholder="请简单描述您的装修需求..."></textarea>
+                        <button type="submit">立即提交</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2025 周童装饰. 版权所有.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 导航栏滚动效果
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 移动端导航菜单
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            // 点击链接后关闭菜单
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Hero 轮播图
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentSlide = 0;
+
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[n].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+                resetInterval();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            // FAQ 手风琴效果
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // 导航链接滚动监听
+            const sections = document.querySelectorAll('section');
+            const navLi = document.querySelectorAll('.nav-links li a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 70) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
 
